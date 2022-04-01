@@ -255,9 +255,8 @@ describe('processXmlResult', () => {
     expect(result.version).toBe(2)
     expect(result.status).toEqual('error')
     expect(result.tests).toHaveLength(0)
-    expect(result.message).toBe("Test run did not produce any output. Check your code to see if the code " +
-      "exits unexpectedly before the report is generated.\n\nE.g. Using the `die` function will cause the test " +
-      "runner to exit unexpectedly.")
+    expect(result.message).toBe("Unit test run did not produce any results. Did the tests finish " +
+      "completely?\n\nUsing the `die` function in your code will cause the test run to not produce any output.")
   })
 })
 
