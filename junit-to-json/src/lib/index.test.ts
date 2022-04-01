@@ -1,6 +1,11 @@
 export {}
-import {load} from 'cheerio'
-import {parseTestCase, parseTestSuite, parseTestSuites, processXmlResult,} from './index'
+import { load } from 'cheerio'
+import {
+  parseTestCase,
+  parseTestSuite,
+  parseTestSuites,
+  processXmlResult,
+} from './index'
 
 describe('parseTestCase', () => {
   test('parses passing test', () => {
@@ -10,7 +15,7 @@ describe('parseTestCase', () => {
     const testCaseEl = load(xml)('testcase')
     const result = parseTestCase(testCaseEl)
 
-    expect(result).toEqual({name: 'test1', status: 'pass', output: ''})
+    expect(result).toEqual({ name: 'test1', status: 'pass', output: '' })
   })
 
   test('parses passing test with system output', () => {
@@ -255,8 +260,7 @@ describe('processXmlResult', () => {
     expect(result.version).toBe(2)
     expect(result.status).toEqual('error')
     expect(result.tests).toHaveLength(0)
-    expect(result.message).toBe("Unit test run did not produce any results. Did the tests finish " +
-      "completely?\n\nUsing the `die` function in your code will cause the test run to not produce any output.")
+    expect(result.message).toBe('Unit test run did not produce any results. Did the tests die?')
   })
 })
 
